@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import {Button} from 'primeng/button';
+import {DatePicker} from 'primeng/datepicker';
+import {InputText} from 'primeng/inputtext';
+import {Textarea} from 'primeng/textarea';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Button],
+  imports: [Button, DatePicker, InputText, Textarea],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'where-my-money-goes';
+
 }
