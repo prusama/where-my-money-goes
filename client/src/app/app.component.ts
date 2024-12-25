@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import {Button} from 'primeng/button';
-import {DatePicker} from 'primeng/datepicker';
-import {InputText} from 'primeng/inputtext';
-import {Textarea} from 'primeng/textarea';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [Button, DatePicker, InputText, Textarea],
+  imports: [Button, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
