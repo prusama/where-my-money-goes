@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import {NotFoundPageComponent} from './core/pages/not-found-page/not-found-page.component';
+import {isAuthenticatedGuard} from './core/guards/is-authenticated.guard';
 
 export const routes: Routes = [
   {
@@ -9,6 +10,7 @@ export const routes: Routes = [
   {
     path: 'tracker',
     loadChildren: () => import('./modules/tracker/tracker.module').then(m => m.TrackerModule),
+    canMatch: [isAuthenticatedGuard]
   },
   {
     path: '**',
