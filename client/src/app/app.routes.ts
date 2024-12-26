@@ -4,6 +4,11 @@ import {isAuthenticatedGuard} from './core/guards/is-authenticated.guard';
 
 export const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'tracker'
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
   },
