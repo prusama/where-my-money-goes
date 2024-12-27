@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { TrackerRoutingModule } from './tracker-routing.module';
 import {DashboardPageComponent} from './pages/dashboard-page/dashboard-page.component';
+import {MonthListComponent} from './components/month-list/month-list.component';
 
 
 @NgModule({
   declarations: [
-    DashboardPageComponent
+    DashboardPageComponent,
+    MonthListComponent
   ],
   imports: [
     CommonModule,
