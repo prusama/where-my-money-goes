@@ -11,4 +11,9 @@ import {Card} from 'primeng/card';
 })
 export class LayoutComponent {
 
+  toggleDarkMode(event: MouseEvent): void {
+    event.preventDefault();
+    const element = document.querySelector('html');
+    element?.classList.toggle('dark');
+  }
 }
