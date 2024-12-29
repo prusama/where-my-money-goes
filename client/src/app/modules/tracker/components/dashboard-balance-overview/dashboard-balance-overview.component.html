@@ -1,1 +1,8 @@
-<p>dashboard-balance-overview works!</p>
+
+
+@for (yearBalance of balancesGroupedByYears(); track yearBalance.id) {
+  <div class="mb-6">
+    <h2 class="text-4xl font-bold">{{yearBalance.year}}</h2>
+    <app-month-list />
+  </div>
+}
