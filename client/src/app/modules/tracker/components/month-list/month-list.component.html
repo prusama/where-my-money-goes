@@ -1,1 +1,12 @@
-<p>month-list works!</p>
+<p-table [value]="yearBalance().months" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template #header>
+    <tr>
+      <th>Month</th>
+    </tr>
+  </ng-template>
+  <ng-template #body let-month>
+    <tr>
+      <td>{{ month.month }}</td>
+    </tr>
+  </ng-template>
+</p-table>
