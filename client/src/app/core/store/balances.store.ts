@@ -28,7 +28,10 @@ export const BalancesStore = signalStore(
       const newBalance: YearBalance = {
         id: Math.random().toString(),
         year: year,
-        months: []
+        months: [],
+        yearIncomes: 15000,
+        yearExpenses: 10000,
+        yearBalance: 5000,
       };
       patchState(store, addEntity(newBalance))
     },

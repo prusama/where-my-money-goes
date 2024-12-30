@@ -3,6 +3,8 @@ import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {LayoutComponent} from './core/components/layout/layout.component';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {filter, map} from 'rxjs';
+import {registerLocaleData} from '@angular/common';
+import localeCs from '@angular/common/locales/cs';
 
 @Component({
   selector: 'app-root',
@@ -18,4 +20,8 @@ export class AppComponent {
   ));
 
   isInAuthSection = computed(() => this.#currentUrl()?.includes('/auth/'));
+
+  constructor() {
+    registerLocaleData(localeCs);
+  }
 }

@@ -1,12 +1,23 @@
-<p-table [value]="yearBalance().months">
+<p-table [value]="yearBalance().months" selectionMode="single">
   <ng-template #header>
     <tr>
-      <th>Month</th>
+      <th></th>
+      <th class="w-80">Incomes vs Expenses</th>
+      <th class="w-80 text-end">Balance</th>
     </tr>
   </ng-template>
   <ng-template #body let-month>
     <tr>
       <td>{{ monthNames[month.month] | titlecase }}</td>
+      <td>
+        <div>
+          <i class="pi pi-caret-up text-green-600 mr-2"></i> <span class="text-green-600">+{{ month.monthIncomes | currency }}</span>
+        </div>
+        <div>
+          <i class="pi pi-caret-down text-red-600 mr-2"></i> <span class="text-red-600">-{{ month.monthExpenses | currency }}</span>
+        </div>
+      </td>
+      <td class="text-end"><i class="pi pi-caret-up text-green-600 mr-2"></i> <span class="text-green-600 font-semibold">+{{ month.monthIncomes | currency }}</span></td>
     </tr>
   </ng-template>
 </p-table>

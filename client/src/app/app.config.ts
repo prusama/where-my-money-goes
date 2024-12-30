@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import {ApplicationConfig, DEFAULT_CURRENCY_CODE, LOCALE_ID, provideZoneChangeDetection} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
@@ -22,6 +22,8 @@ export const appConfig: ApplicationConfig = {
           }
         }
       }
-    })
+    }),
+    { provide: LOCALE_ID, useValue: 'cs-CZ' },
+    {provide: DEFAULT_CURRENCY_CODE, useValue: 'CZK' }
   ]
 };
