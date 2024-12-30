@@ -1,4 +1,4 @@
-<p-table [value]="yearBalance().months" [tableStyle]="{ 'min-width': '50rem' }">
+<p-table [value]="yearBalance().months">
   <ng-template #header>
     <tr>
       <th>Month</th>
@@ -6,7 +6,7 @@
   </ng-template>
   <ng-template #body let-month>
     <tr>
-      <td>{{ month.month }}</td>
+      <td>{{ monthNames[month.month] | titlecase }}</td>
     </tr>
   </ng-template>
 </p-table>
