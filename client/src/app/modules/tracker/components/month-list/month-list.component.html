@@ -7,8 +7,8 @@
     </tr>
   </ng-template>
   <ng-template #body let-month>
-    <tr>
-      <td>{{ monthNames[month.month] | titlecase }}</td>
+    <tr class="cursor-pointer">
+      <td><span class="text-lg font-semibold mr-2">{{ monthNames[month.month] | titlecase }}</span> <i class="pi pi-angle-right"></i></td>
       <td>
         <div>
           <i class="pi pi-caret-up text-green-600 mr-2"></i> <span class="text-green-600">+{{ month.monthIncomes | currency }}</span>

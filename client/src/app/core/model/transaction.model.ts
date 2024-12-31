@@ -1,7 +1,7 @@
 
 export interface Transaction {
   id?: string;
-  date: Date;
+  date: Date | string;
   type: TransactionType,
   amount: number;
   currency: CurrencyCode
