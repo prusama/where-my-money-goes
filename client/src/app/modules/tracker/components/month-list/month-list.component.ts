@@ -2,8 +2,9 @@ import {Component, computed, input, InputSignal, Signal} from '@angular/core';
 import {YearBalance} from '../../../../core/model/year-balance.model';
 import {MONTH_NAMES} from '../../../../core/constants/months.const';
 import {MonthBalance} from '../../../../core/model/month-balance.model';
-import { $dt } from '@primeng/themes';
+import {$dt} from '@primeng/themes';
 import {ChartData, ChartOptions} from 'chart.js';
+import {TransactionType} from '../../../../core/model/transaction.model';
 
 interface MonthsGridItem extends MonthBalance {
   chartData: ChartData;
@@ -27,7 +28,7 @@ export class MonthListComponent {
   monthsGrid: Signal<Array<MonthsGridItem>> = computed(() => {
     return this.yearBalance()?.months?.map((month) => {
       const maxYValue = Math.max(...month.transactions?.map(t => t.amount));
-
+      console.log(maxYValue);
       return {
         ...month,
         chartData: {
@@ -35,7 +36,10 @@ export class MonthListComponent {
           datasets: [
             {
               label: 'First Dataset',
-              data: [0, 65, -23, -40, 86, 56, 55, 40],
+              data: [
+                0,
+                ...month.transactions?.map(t => t.type === TransactionType.EXPENSE ? -t.amount : t.amount)
+              ],
               fill: false,
               borderColor: $dt('primary.color'),
               tension: 0.4,
