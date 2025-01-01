@@ -1,9 +1,10 @@
-<p-table [value]="yearBalance().months" selectionMode="single">
+<p-table [value]="monthsGrid()" selectionMode="single">
   <ng-template #header>
     <tr>
       <th></th>
       <th class="w-80">Incomes vs Expenses</th>
       <th class="w-80 text-end">Balance</th>
+      <th class="w-80 text-end">Transactions</th>
     </tr>
   </ng-template>
   <ng-template #body let-month>
@@ -18,6 +19,11 @@
         </div>
       </td>
       <td class="text-end"><i class="pi pi-caret-up text-green-600 mr-2"></i> <span class="text-green-600 font-semibold">+{{ month.monthIncomes | currency }}</span></td>
+      <td class="text-right">
+        <div class="flex justify-end">
+          <p-chart type="line" [data]="month.chartData" [options]="month.chartOptions" class="h-[3rem] flex" />
+        </div>
+      </td>
     </tr>
   </ng-template>
 </p-table>
