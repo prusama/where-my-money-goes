@@ -38,11 +38,12 @@ export class MonthListComponent {
               label: 'First Dataset',
               data: [
                 0,
+                // TODO: Sum prev transaction amounts (as history view)
                 ...month.transactions?.map(t => t.type === TransactionType.EXPENSE ? -t.amount : t.amount)
               ],
               fill: false,
               borderColor: $dt('primary.color'),
-              tension: 0.4,
+              //tension: 0.4,
               borderWidth: 1
             }
           ]
