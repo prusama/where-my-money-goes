@@ -27,8 +27,15 @@ export class MonthListComponent {
 
   monthsGrid: Signal<Array<MonthsGridItem>> = computed(() => {
     return this.yearBalance()?.months?.map((month) => {
-      const maxYValue = Math.max(...month.transactions?.map(t => t.amount));
-      console.log(maxYValue);
+      const balanceHistory = month.transactions
+        ?.map((elem, index) => month.transactions?.slice(0,index + 1)
+          ?.reduce((a, b) => {
+            const amountToAdd = b.type === TransactionType.EXPENSE ? -b.amount : b.amount;
+
+            return a + amountToAdd;
+          }, 0));
+      const maxYValue = Math.max(...balanceHistory);
+
       return {
         ...month,
         chartData: {
@@ -38,8 +45,7 @@ export class MonthListComponent {
               label: 'First Dataset',
               data: [
                 0,
-                // TODO: Sum prev transaction amounts (as history view)
-                ...month.transactions?.map(t => t.type === TransactionType.EXPENSE ? -t.amount : t.amount)
+                ...balanceHistory
               ],
               fill: false,
               borderColor: $dt('primary.color'),
