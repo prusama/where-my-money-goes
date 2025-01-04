@@ -5,6 +5,7 @@ import {MonthBalance} from '../../../../core/model/month-balance.model';
 import {$dt} from '@primeng/themes';
 import {ChartData, ChartOptions} from 'chart.js';
 import {TransactionType} from '../../../../core/model/transaction.model';
+import {ActivatedRoute, Router} from '@angular/router';
 
 interface MonthsGridItem extends MonthBalance {
   chartData: ChartData;
@@ -24,6 +25,12 @@ export class MonthListComponent {
   textColor = this.documentStyle.getPropertyValue('--p-text-color');
   textColorSecondary = this.documentStyle.getPropertyValue('--p-text-muted-color');
   surfaceBorder = this.documentStyle.getPropertyValue('--p-content-border-color');
+
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
+  }
 
   monthsGrid: Signal<Array<MonthsGridItem>> = computed(() => {
     return this.yearBalance()?.months?.map((month) => {
@@ -105,5 +112,9 @@ export class MonthListComponent {
     })
   });
 
-
+  goToMonthOverview(monthBalance: MonthBalance): void {
+    this.router.navigate(['year', monthBalance.year, 'month', monthBalance.month], {
+      relativeTo: this.activatedRoute
+    });
+  }
 }

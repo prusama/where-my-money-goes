@@ -49,7 +49,7 @@ export const BalancesStore = signalStore(
         return deepComputed(() => m)
       });
     },
-    getMonthTransactions(year: number, month: number): Array<DeepSignal<Transaction>> {
+    getMonthBalance(year: number, month: number): Array<DeepSignal<Transaction>> {
       const transactions = store.yearBalances()
         ?.find(y => y.year === year)?.months
         ?.find(m => m.month === month)?.transactions ?? [];

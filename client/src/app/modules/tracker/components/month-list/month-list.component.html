@@ -8,7 +8,7 @@
     </tr>
   </ng-template>
   <ng-template #body let-month>
-    <tr class="cursor-pointer">
+    <tr class="cursor-pointer" (click)="goToMonthOverview(month)">
       <td><span class="text-lg font-semibold mr-2">{{ monthNames[month.month] | titlecase }}</span> <i class="pi pi-angle-right"></i></td>
       <td>
         <div>

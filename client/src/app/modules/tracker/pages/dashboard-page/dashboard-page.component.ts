@@ -11,11 +11,5 @@ export class DashboardPageComponent implements OnInit {
   balancesStore = inject(BalancesStore);
 
   ngOnInit() {
-    /*console.log(this.balancesStore.loading());
-    console.log(this.balancesStore.entities);
-    this.balancesStore.loadYears();
-    console.log(this.balancesStore.loading());
-    console.log(this.balancesStore.entities());*/
-    console.log(this.balancesStore.getMonthTransactions(2022, 1));
   }
 }

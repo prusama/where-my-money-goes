@@ -1,5 +1,5 @@
-export const MONTH_NAMES = [
-  'january',
+export enum MONTH_NAMES {
+  'january' = 1,
   'february',
   'march',
   'april',
@@ -11,4 +11,4 @@ export const MONTH_NAMES = [
   'october',
   'november',
   'december'
-];
+}

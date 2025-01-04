@@ -11,7 +11,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
     months: [
       {
         id: '18',
-        month: 5,
+        month: 6,
         year: 2022,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -56,7 +56,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '17',
-        month: 4,
+        month: 5,
         year: 2022,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -65,7 +65,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '16',
-        month: 3,
+        month: 4,
         year: 2022,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -74,7 +74,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '15',
-        month: 2,
+        month: 3,
         year: 2022,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -83,7 +83,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '14',
-        month: 1,
+        month: 2,
         year: 2022,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -92,7 +92,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '13',
-        month: 0,
+        month: 1,
         year: 2022,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -110,7 +110,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
     months: [
       {
         id: '12',
-        month: 11,
+        month: 12,
         year: 2021,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -119,7 +119,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '11',
-        month: 10,
+        month: 11,
         year: 2021,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -128,7 +128,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '10',
-        month: 9,
+        month: 10,
         year: 2021,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -137,7 +137,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '9',
-        month: 8,
+        month: 9,
         year: 2021,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -146,7 +146,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '8',
-        month: 7,
+        month: 8,
         year: 2021,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -155,7 +155,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '7',
-        month: 6,
+        month: 7,
         year: 2021,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -164,7 +164,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '6',
-        month: 5,
+        month: 6,
         year: 2021,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -173,7 +173,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '5',
-        month: 4,
+        month: 5,
         year: 2021,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -182,7 +182,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '4',
-        month: 3,
+        month: 4,
         year: 2021,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -191,7 +191,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '3',
-        month: 2,
+        month: 3,
         year: 2021,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -200,7 +200,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '2',
-        month: 1,
+        month: 2,
         year: 2021,
         monthIncomes: 1000,
         monthExpenses: 500,
@@ -209,7 +209,7 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
       },
       {
         id: '1',
-        month: 0,
+        month: 1,
         year: 2021,
         monthIncomes: 1000,
         monthExpenses: 500,
