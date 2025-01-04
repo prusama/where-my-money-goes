@@ -7,13 +7,15 @@ import {MonthListComponent} from './components/month-list/month-list.component';
 import { DashboardBalanceOverviewComponent } from './components/dashboard-balance-overview/dashboard-balance-overview.component';
 import {TableModule} from 'primeng/table';
 import {UIChart} from 'primeng/chart';
+import { MonthOverviewComponent } from './pages/month-overview/month-overview.component';
 
 
 @NgModule({
   declarations: [
     DashboardPageComponent,
     MonthListComponent,
-    DashboardBalanceOverviewComponent
+    DashboardBalanceOverviewComponent,
+    MonthOverviewComponent
   ],
   imports: [
     CommonModule,
