@@ -4,8 +4,8 @@ import {MONTH_NAMES} from '../../../../core/constants/months.const';
 import {MonthBalance} from '../../../../core/model/month-balance.model';
 import {$dt} from '@primeng/themes';
 import {ChartData, ChartOptions} from 'chart.js';
-import {TransactionType} from '../../../../core/model/transaction.model';
 import {ActivatedRoute, Router} from '@angular/router';
+import {getMonthListConfiguration} from './month-list-chart.config';
 
 interface MonthsGridItem extends MonthBalance {
   chartData: ChartData;
@@ -22,7 +22,6 @@ export class MonthListComponent {
   yearBalance: InputSignal<YearBalance> = input.required();
   monthNames = MONTH_NAMES;
   documentStyle = getComputedStyle(document.documentElement);
-  textColor = this.documentStyle.getPropertyValue('--p-text-color');
   textColorSecondary = this.documentStyle.getPropertyValue('--p-text-muted-color');
   surfaceBorder = this.documentStyle.getPropertyValue('--p-content-border-color');
 
@@ -34,80 +33,12 @@ export class MonthListComponent {
 
   monthsGrid: Signal<Array<MonthsGridItem>> = computed(() => {
     return this.yearBalance()?.months?.map((month) => {
-      const balanceHistory = month.transactions
-        ?.map((elem, index) => month.transactions?.slice(0,index + 1)
-          ?.reduce((a, b) => {
-            const amountToAdd = b.type === TransactionType.EXPENSE ? -b.amount : b.amount;
-
-            return a + amountToAdd;
-          }, 0));
-      const maxYValue = Math.max(...balanceHistory);
+      const {chartData, chartOptions} = getMonthListConfiguration(month, $dt('primary.color').value, this.textColorSecondary, this.surfaceBorder);
 
       return {
         ...month,
-        chartData: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [
-            {
-              label: 'First Dataset',
-              data: [
-                0,
-                ...balanceHistory
-              ],
-              fill: false,
-              borderColor: $dt('primary.color'),
-              //tension: 0.4,
-              borderWidth: 1
-            }
-          ]
-        },
-        chartOptions: {
-          elements: {
-            point:{
-              radius: 0
-            }
-          },
-          plugins: {
-            legend: {
-              display: false
-            },
-            tooltip: {
-              enabled: false
-            }
-          },
-          scales: {
-            x: {
-              display: false,
-              border: {
-                display: false,
-              },
-              ticks: {
-                color: this.textColorSecondary,
-              },
-              grid: {
-                display: false,
-                color: this.surfaceBorder,
-              }
-            },
-            y: {
-              min: -maxYValue,
-              max: maxYValue,
-              //display: false,
-              border: {
-                display: false,
-              },
-              ticks: {
-                color: 'red',
-                display: false,
-              },
-              grid: {
-                //display: false,
-                color: this.surfaceBorder,
-                lineWidth: ({ tick }) => tick.value == 0 ? 1 : 0
-              }
-            }
-          }
-        }
+        chartData,
+        chartOptions
       }
     })
   });
