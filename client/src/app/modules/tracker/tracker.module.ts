@@ -8,6 +8,9 @@ import { DashboardBalanceOverviewComponent } from './components/dashboard-balanc
 import {TableModule} from 'primeng/table';
 import {UIChart} from 'primeng/chart';
 import { MonthOverviewComponent } from './pages/month-overview/month-overview.component';
+import {Card} from 'primeng/card';
+import {Panel} from 'primeng/panel';
+import { MonthTransactionsChartComponent } from './components/month-transactions-chart/month-transactions-chart.component';
 
 
 @NgModule({
@@ -15,13 +18,16 @@ import { MonthOverviewComponent } from './pages/month-overview/month-overview.co
     DashboardPageComponent,
     MonthListComponent,
     DashboardBalanceOverviewComponent,
-    MonthOverviewComponent
+    MonthOverviewComponent,
+    MonthTransactionsChartComponent
   ],
   imports: [
     CommonModule,
     TrackerRoutingModule,
     TableModule,
-    UIChart
+    UIChart,
+    Card,
+    Panel
   ]
 })
 export class TrackerModule { }

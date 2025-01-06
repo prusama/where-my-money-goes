@@ -5,7 +5,7 @@ import {MonthBalance} from '../../../../core/model/month-balance.model';
 import {$dt} from '@primeng/themes';
 import {ChartData, ChartOptions} from 'chart.js';
 import {ActivatedRoute, Router} from '@angular/router';
-import {getMonthListConfiguration} from './month-list-chart.config';
+import {getMonthListChartConfiguration} from './month-list-chart.config';
 
 interface MonthsGridItem extends MonthBalance {
   chartData: ChartData;
@@ -33,7 +33,7 @@ export class MonthListComponent {
 
   monthsGrid: Signal<Array<MonthsGridItem>> = computed(() => {
     return this.yearBalance()?.months?.map((month) => {
-      const {chartData, chartOptions} = getMonthListConfiguration(month, $dt('primary.color').value, this.textColorSecondary, this.surfaceBorder);
+      const {chartData, chartOptions} = getMonthListChartConfiguration(month, $dt('primary.color').value, this.textColorSecondary, this.surfaceBorder);
 
       return {
         ...month,

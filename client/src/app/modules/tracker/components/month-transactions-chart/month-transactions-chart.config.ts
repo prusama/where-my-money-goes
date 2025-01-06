@@ -12,12 +12,16 @@ export interface MonthListChartConfiguration {
   chartOptions: ChartOptions;
 }
 
-export const getMonthListChartConfiguration = (
-  monthBalance: MonthBalance,
+export const getMonthTransactionChartConfig = (
+  monthBalance: MonthBalance | undefined,
   lineColor: string,
   ticksColor: string,
   gridColor: string,
-): MonthListChartConfiguration => {
+): MonthListChartConfiguration | undefined => {
+  if (!monthBalance) {
+    return;
+  }
+
   const balanceHistory = generateBalanceHistory(monthBalance);
   const maxYValue = Math.max(...balanceHistory.map(b => b.balanceAmount));
 
@@ -51,18 +55,13 @@ const monthListChartOptions = (
   maxYValue: number
 ): ChartOptions => {
   return {
-    elements: {
-      point:{
-        radius: 0
-      }
-    },
+    responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false
       },
-      tooltip: {
-        enabled: false
-      }
+
     },
     scales: {
       x: {

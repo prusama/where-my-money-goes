@@ -1,6 +1,5 @@
 import {Component, computed, inject, input} from '@angular/core';
 import {BalancesStore} from '../../../../core/store/balances.store';
-import {ActivatedRoute} from '@angular/router';
 import {MONTH_NAMES} from '../../../../core/constants/months.const';
 
 @Component({
@@ -10,14 +9,13 @@ import {MONTH_NAMES} from '../../../../core/constants/months.const';
   styleUrl: './month-overview.component.scss'
 })
 export class MonthOverviewComponent {
-  activatedRoute = inject(ActivatedRoute);
   balancesStore = inject(BalancesStore);
 
   year = input.required<number>();
   month = input.required<number>();
 
   monthBalance = computed(() => {
-    return this.balancesStore.getMonthBalance(this.year(), this.month())
+    return this.balancesStore.getMonthBalance(+this.year(), +this.month())()
   });
 
   title = computed(() => {
