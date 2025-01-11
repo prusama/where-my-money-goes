@@ -18,6 +18,10 @@ export class MonthOverviewComponent {
     return this.balancesStore.getMonthBalance(+this.year(), +this.month())()
   });
 
+  transactions = computed(() => {
+    return this.monthBalance()?.transactions ?? [];
+  });
+
   title = computed(() => {
     const month = MONTH_NAMES[this.month()];
     const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1);

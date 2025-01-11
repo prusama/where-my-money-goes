@@ -4,9 +4,17 @@
 <h1 class="text-6xl font-bold mb-6">{{ title() }}</h1>
 
 <div>
-  <div>
+  <div class="mb-6">
     <p-panel>
       <app-month-transactions-chart [monthBalance]="monthBalance()" />
+    </p-panel>
+  </div>
+  <div class="grid grid-cols-3 gap-5">
+    <p-panel class="col-span-2">
+      <app-transactions-list [transactions]="transactions()" />
+    </p-panel>
+    <p-panel class="col-span-1">
+
     </p-panel>
   </div>
 </div>

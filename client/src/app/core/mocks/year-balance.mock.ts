@@ -22,35 +22,40 @@ export const YEAR_BALANCE_MOCK: Array<YearBalance> = [
             date: '2022-06-01T16:29:33.717Z',
             type: TransactionType.EXPENSE,
             amount: 100,
-            currency: CurrencyCode.CZK
+            currency: CurrencyCode.CZK,
+            name: 'Test'
           },
           {
             id: '101',
             date: '2022-06-04T16:29:33.717Z',
             type: TransactionType.EXPENSE,
             amount: 200,
-            currency: CurrencyCode.CZK
+            currency: CurrencyCode.CZK,
+            name: 'Test'
           },
           {
             id: '102',
             date: '2022-06-14T16:29:33.717Z',
             type: TransactionType.EXPENSE,
             amount: 100,
-            currency: CurrencyCode.CZK
+            currency: CurrencyCode.CZK,
+            name: 'Test'
           },
           {
             id: '103',
             date: '2022-06-22T16:29:33.717Z',
             type: TransactionType.INCOME,
             amount: 1000,
-            currency: CurrencyCode.CZK
+            currency: CurrencyCode.CZK,
+            name: 'Test'
           },
           {
             id: '104',
             date: '2022-06-29T16:29:33.717Z',
             type: TransactionType.EXPENSE,
             amount: 100,
-            currency: CurrencyCode.CZK
+            currency: CurrencyCode.CZK,
+            name: 'Test'
           }
         ]
       },

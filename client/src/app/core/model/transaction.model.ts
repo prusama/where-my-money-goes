@@ -2,9 +2,11 @@
 export interface Transaction {
   id?: string;
   date: Date | string;
-  type: TransactionType,
+  name: string;
+  type: TransactionType;
   amount: number;
-  currency: CurrencyCode
+  currency: CurrencyCode;
+
 }
 
 export enum TransactionType {

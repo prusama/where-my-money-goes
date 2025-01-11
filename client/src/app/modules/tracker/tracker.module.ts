@@ -11,6 +11,7 @@ import { MonthOverviewComponent } from './pages/month-overview/month-overview.co
 import {Card} from 'primeng/card';
 import {Panel} from 'primeng/panel';
 import { MonthTransactionsChartComponent } from './components/month-transactions-chart/month-transactions-chart.component';
+import { TransactionsListComponent } from './components/transactions-list/transactions-list.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MonthTransactionsChartComponent } from './components/month-transactions
     MonthListComponent,
     DashboardBalanceOverviewComponent,
     MonthOverviewComponent,
-    MonthTransactionsChartComponent
+    MonthTransactionsChartComponent,
+    TransactionsListComponent
   ],
   imports: [
     CommonModule,
