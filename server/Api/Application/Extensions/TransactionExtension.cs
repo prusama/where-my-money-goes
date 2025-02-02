@@ -17,4 +17,9 @@ public static class TransactionExtension
             AccountName = transaction.AccountName,
         };
     }
+
+    public static List<TransactionDto> ToDtoList(this List<Transaction> transactions)
+    {
+        return transactions.Select(t => t.ToDto()).ToList();
+    }
 }

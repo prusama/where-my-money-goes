@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Api.Application.DTOs;
+using Api.Application.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Presentation.Controllers;
 
@@ -6,9 +8,18 @@ namespace Api.Presentation.Controllers;
 [Route("api/[controller]")]
 public class TransactionController : ControllerBase
 {
-    [HttpGet]
-    public IActionResult GetAllTransactions()
+    private readonly ITransactionService _transactionService;
+
+    public TransactionController(ITransactionService transactionService)
     {
-        return Ok();
+        _transactionService = transactionService;
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<List<TransactionDto>>> GetAllTransactions()
+    {
+        var transactions = await _transactionService.GetAllTransactionsAsync();
+        
+        return Ok(transactions);
     }
 }

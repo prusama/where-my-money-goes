@@ -1,4 +1,7 @@
+using Api.Application.Interfaces;
+using Api.Application.Services;
 using Api.Infrastructure.Persistence;
+using Api.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
@@ -12,6 +15,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("WhereMyMoneyGoesConnectionString"));
 });
+
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+
+builder.Services.AddScoped<ITransactionService, TransactionService>();
 
 var app = builder.Build();
 
