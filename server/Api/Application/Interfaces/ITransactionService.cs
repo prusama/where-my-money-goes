@@ -5,4 +5,5 @@ namespace Api.Application.Interfaces;
 public interface ITransactionService
 {
     Task<List<TransactionDto>> GetAllTransactionsAsync();
+    Task<List<YearlyTransactionGroupDto>> GetTransactionsGroupedByYearAsync();
 }

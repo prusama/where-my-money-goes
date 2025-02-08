@@ -19,7 +19,13 @@ public class TransactionController : ControllerBase
     public async Task<ActionResult<List<TransactionDto>>> GetAllTransactions()
     {
         var transactions = await _transactionService.GetAllTransactionsAsync();
-        
         return Ok(transactions);
+    }
+
+    [HttpGet("groupedByYear")]
+    public async Task<ActionResult<List<YearlyTransactionGroupDto>>> GetGroupedTransactionsByYear()
+    {
+        var groupedTransactions = await _transactionService.GetTransactionsGroupedByYearAsync();
+        return Ok(groupedTransactions);
     }
 }
