@@ -1,12 +1,27 @@
-
-export interface Transaction {
+export type Transaction = {
   id?: string;
   date: Date | string;
-  name: string;
-  type: TransactionType;
+  transactionType: TransactionType;
   amount: number;
   currency: CurrencyCode;
+  accountName: string;
+}
 
+export type YearTransactionGroup = {
+  year: number;
+  yearIncomes: number;
+  yearExpanses: number
+  yearBalance: number;
+  months: Array<MonthTransactionGroup>
+}
+
+export type MonthTransactionGroup = {
+  month: number;
+  year: number;
+  monthIncomes: number;
+  monthExpanses: number
+  monthBalance: number;
+  transactions: Array<Transaction>;
 }
 
 export enum TransactionType {

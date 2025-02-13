@@ -1,5 +1,6 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, effect, inject, OnInit} from '@angular/core';
 import {BalancesStore} from '../../../../core/store/balances.store';
+import {TransactionService} from '../../../../core/services/transaction.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -7,9 +8,17 @@ import {BalancesStore} from '../../../../core/store/balances.store';
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss'
 })
-export class DashboardPageComponent implements OnInit {
+export class DashboardPageComponent {
   balancesStore = inject(BalancesStore);
+  #transactionService = inject(TransactionService);
 
-  ngOnInit() {
+  constructor(
+
+  ) {
+    effect(() => {
+      console.log(this.#transactionService.transactions());
+    });
+
+    this.#transactionService.refreshTransactions();
   }
 }

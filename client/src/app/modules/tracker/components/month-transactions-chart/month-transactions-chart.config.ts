@@ -104,7 +104,7 @@ const generateBalanceHistory = (monthBalance: MonthBalance): Array<BalanceHistor
 
       const balanceAmount = monthBalance.transactions?.slice(0,index + 1)
         ?.reduce((a, b) => {
-          const amountToAdd = b.type === TransactionType.EXPENSE ? -b.amount : b.amount;
+          const amountToAdd = b.transactionType === TransactionType.EXPENSE ? -b.amount : b.amount;
 
           return a + amountToAdd;
         }, 0);
