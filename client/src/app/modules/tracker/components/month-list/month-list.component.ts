@@ -1,13 +1,12 @@
 import {Component, computed, input, InputSignal, Signal} from '@angular/core';
-import {YearBalance} from '../../../../core/model/year-balance.model';
 import {MONTH_NAMES} from '../../../../core/constants/months.const';
-import {MonthBalance} from '../../../../core/model/month-balance.model';
 import {$dt} from '@primeng/themes';
 import {ChartData, ChartOptions} from 'chart.js';
 import {ActivatedRoute, Router} from '@angular/router';
 import {getMonthListChartConfiguration} from './month-list-chart.config';
+import {MonthTransactionGroup, YearTransactionGroup} from '../../../../core/model/transaction.model';
 
-interface MonthsGridItem extends MonthBalance {
+interface MonthsGridItem extends MonthTransactionGroup {
   chartData: ChartData;
   chartOptions: ChartOptions;
 }
@@ -19,7 +18,7 @@ interface MonthsGridItem extends MonthBalance {
   styleUrl: './month-list.component.scss'
 })
 export class MonthListComponent {
-  yearBalance: InputSignal<YearBalance> = input.required();
+  yearTransactionGroup: InputSignal<YearTransactionGroup> = input.required();
   monthNames = MONTH_NAMES;
   documentStyle = getComputedStyle(document.documentElement);
   textColorSecondary = this.documentStyle.getPropertyValue('--p-text-muted-color');
@@ -32,7 +31,7 @@ export class MonthListComponent {
   }
 
   monthsGrid: Signal<Array<MonthsGridItem>> = computed(() => {
-    return this.yearBalance()?.months?.map((month) => {
+    return this.yearTransactionGroup()?.months?.map((month) => {
       const {chartData, chartOptions} = getMonthListChartConfiguration(month, $dt('primary.color').value, this.textColorSecondary, this.surfaceBorder);
 
       return {
@@ -43,7 +42,7 @@ export class MonthListComponent {
     })
   });
 
-  goToMonthOverview(monthBalance: MonthBalance): void {
+  goToMonthOverview(monthBalance: MonthTransactionGroup): void {
     this.router.navigate(['year', monthBalance.year, 'month', monthBalance.month], {
       relativeTo: this.activatedRoute
     });

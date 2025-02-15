@@ -11,5 +11,5 @@ import {Transaction, TransactionType} from '../../../../core/model/transaction.m
 export class TransactionsListComponent {
   TransactionTypes = TransactionType;
 
-  transactions = input.required<Array<Transaction>>();
+  transactions = input<Array<Transaction>>();
 }

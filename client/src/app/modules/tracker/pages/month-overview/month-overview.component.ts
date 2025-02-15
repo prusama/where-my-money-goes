@@ -1,6 +1,6 @@
 import {Component, computed, inject, input} from '@angular/core';
-import {BalancesStore} from '../../../../core/store/balances.store';
 import {MONTH_NAMES} from '../../../../core/constants/months.const';
+import {TransactionService} from '../../../../core/services/transaction.service';
 
 @Component({
   selector: 'app-month-overview',
@@ -9,17 +9,13 @@ import {MONTH_NAMES} from '../../../../core/constants/months.const';
   styleUrl: './month-overview.component.scss'
 })
 export class MonthOverviewComponent {
-  balancesStore = inject(BalancesStore);
+  #transactionService = inject(TransactionService);
 
   year = input.required<number>();
   month = input.required<number>();
 
-  monthBalance = computed(() => {
-    return this.balancesStore.getMonthBalance(+this.year(), +this.month())()
-  });
-
-  transactions = computed(() => {
-    return this.monthBalance()?.transactions ?? [];
+  monthTransactions = computed(() => {
+    return this.#transactionService.getMonthTransactions(+this.year(), +this.month())()
   });
 
   title = computed(() => {

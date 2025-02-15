@@ -1,6 +1,5 @@
 import {ChartData, ChartOptions} from 'chart.js';
-import {MonthBalance} from '../../../../core/model/month-balance.model';
-import {TransactionType} from '../../../../core/model/transaction.model';
+import {MonthTransactionGroup, TransactionType} from '../../../../core/model/transaction.model';
 
 interface BalanceHistoryItem {
   date: string | Date;
@@ -13,12 +12,12 @@ export interface MonthListChartConfiguration {
 }
 
 export const getMonthListChartConfiguration = (
-  monthBalance: MonthBalance,
+  monthTransactionGroup: MonthTransactionGroup,
   lineColor: string,
   ticksColor: string,
   gridColor: string,
 ): MonthListChartConfiguration => {
-  const balanceHistory = generateBalanceHistory(monthBalance);
+  const balanceHistory = generateBalanceHistory(monthTransactionGroup);
   const maxYValue = Math.max(...balanceHistory.map(b => b.balanceAmount));
 
   return {
@@ -52,7 +51,7 @@ const monthListChartOptions = (
 ): ChartOptions => {
   return {
     elements: {
-      point:{
+      point: {
         radius: 0
       }
     },
@@ -92,18 +91,18 @@ const monthListChartOptions = (
         grid: {
           //display: false,
           color: gridColor,
-          lineWidth: ({ tick }) => tick.value == 0 ? 1 : 0
+          lineWidth: ({tick}) => tick.value == 0 ? 1 : 0
         }
       }
     }
   };
 }
 
-const generateBalanceHistory = (monthBalance: MonthBalance): Array<BalanceHistoryItem> => {
+const generateBalanceHistory = (monthBalance: MonthTransactionGroup): Array<BalanceHistoryItem> => {
   const calculatedHistory = monthBalance.transactions
     ?.map((elem, index) => {
 
-      const balanceAmount = monthBalance.transactions?.slice(0,index + 1)
+      const balanceAmount = monthBalance.transactions?.slice(0, index + 1)
         ?.reduce((a, b) => {
           const amountToAdd = b.transactionType === TransactionType.EXPENSE ? -b.amount : b.amount;
 
@@ -117,7 +116,7 @@ const generateBalanceHistory = (monthBalance: MonthBalance): Array<BalanceHistor
     });
 
   return [
-    { balanceAmount: 0, date: monthBalance.transactions[0]?.date },
+    {balanceAmount: 0, date: monthBalance.transactions[0]?.date},
     ...calculatedHistory
   ]
 }

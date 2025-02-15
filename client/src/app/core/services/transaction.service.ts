@@ -1,6 +1,6 @@
-import {computed, inject, Injectable, Signal, signal} from '@angular/core';
+import {inject, Injectable, Signal, signal} from '@angular/core';
 import {TransactionRepositoryService} from '../repositories/transaction-repository.service';
-import {CurrencyCode, Transaction, TransactionType, YearTransactionGroup} from '../model/transaction.model';
+import {MonthTransactionGroup, Transaction, YearTransactionGroup} from '../model/transaction.model';
 import {combineLatest} from 'rxjs';
 
 @Injectable({
@@ -23,5 +23,17 @@ export class TransactionService {
       this.#transactions.set(allTransaction);
       this.#yearTransactionGroups.set(yearTransactionGroups);
     });
+  }
+
+  getMonthTransactions(year: number, month: number): Signal<MonthTransactionGroup|undefined> {
+    const monthBalance = this.#yearTransactionGroups()
+      ?.find(y => y.year === year)?.months
+      ?.find(m => m.month === month);
+
+    if (!monthBalance) {
+      return signal(undefined);
+    }
+
+    return signal(monthBalance);
   }
 }

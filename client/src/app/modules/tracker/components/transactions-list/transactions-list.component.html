@@ -1,23 +1,26 @@
-<p-table [value]="transactions()" selectionMode="single">
-  <ng-template #header>
-    <tr>
-      <th class="w-52">Date</th>
-      <th></th>
-      <th class="w-80 text-end">Amount</th>
-    </tr>
-  </ng-template>
-  <ng-template #body let-transaction>
-    <tr>
-      <td><span class="text-lg mr-2">{{ transaction.date | date: 'mm.dd.YYY' }}</span></td>
-      <td><span class="text-lg mr-2">{{ transaction.name | titlecase }}</span></td>
-      <td class="text-end">
-        <div *ngIf="transaction.type === TransactionTypes.INCOME">
-          <i class="pi pi-caret-up text-green-600 mr-2"></i> <span class="text-green-600">+{{ transaction.amount | currency }}</span>
-        </div>
-        <div *ngIf="transaction.type === TransactionTypes.EXPENSE">
-          <i class="pi pi-caret-down text-red-600 mr-2"></i> <span class="text-red-600">-{{ transaction.amount | currency }}</span>
-        </div>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
+@if (transactions()) {
+  <p-table [value]="transactions() ?? []" selectionMode="single">
+    <ng-template #header>
+      <tr>
+        <th class="w-52">Date</th>
+        <th></th>
+        <th class="w-80 text-end">Amount</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-transaction>
+      <tr>
+        <td><span class="text-lg mr-2">{{ transaction.date | date: 'mm.dd.YYY' }}</span></td>
+        <td><span class="text-lg mr-2">{{ transaction.name | titlecase }}</span></td>
+        <td class="text-end">
+          <div *ngIf="transaction.type === TransactionTypes.INCOME">
+            <i class="pi pi-caret-up text-green-600 mr-2"></i> <span class="text-green-600">+{{ transaction.amount | currency }}</span>
+          </div>
+          <div *ngIf="transaction.type === TransactionTypes.EXPENSE">
+            <i class="pi pi-caret-down text-red-600 mr-2"></i> <span class="text-red-600">-{{ transaction.amount | currency }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+}
