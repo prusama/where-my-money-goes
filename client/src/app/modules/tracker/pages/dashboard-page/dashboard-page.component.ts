@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {TransactionService} from '../../../../core/services/transaction.service';
 
 @Component({
@@ -7,11 +7,7 @@ import {TransactionService} from '../../../../core/services/transaction.service'
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss'
 })
-export class DashboardPageComponent implements OnInit {
+export class DashboardPageComponent {
   #transactionService = inject(TransactionService);
   yearTransactionGroups = this.#transactionService.yearTransactionGroups;
-
-  ngOnInit() {
-    this.#transactionService.refreshTransactions();
-  }
 }
