@@ -18,7 +18,7 @@
           <i class="pi pi-caret-down text-red-600 mr-2"></i> <span class="text-red-600">-{{ month.monthExpenses | currency }}</span>
         </div>
       </td>
-      <td class="text-end"><i class="pi pi-caret-up text-green-600 mr-2"></i> <span class="text-green-600 font-semibold">+{{ month.monthIncomes | currency }}</span></td>
+      <td class="text-end"><i class="pi pi-caret-up text-green-600 mr-2"></i> <span class="text-green-600 font-semibold">+{{ month.monthBalance | currency }}</span></td>
       <td class="text-right">
         <div class="flex justify-end">
           <p-chart type="line" [data]="month.chartData" [options]="month.chartOptions" class="h-[3rem] flex" />
