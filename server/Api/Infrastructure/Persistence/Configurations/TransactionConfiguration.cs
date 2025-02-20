@@ -16,7 +16,7 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
                 Id = new Guid("ea9c1742-75ee-4482-b1a9-64c1cb3795f1"),
                 Date = new DateTime(2021, 12, 10),
                 Type = TransactionType.Expense,
-                Amount = 1000,
+                Amount = 20000,
                 Currency = "CZK",
                 AccountName = "Tesco"
             },

@@ -1,7 +1,7 @@
 export type Transaction = {
   id?: string;
   date: Date | string;
-  transactionType: TransactionType;
+  type: TransactionType;
   amount: number;
   currency: CurrencyCode;
   accountName: string;
@@ -25,8 +25,8 @@ export type MonthTransactionGroup = {
 }
 
 export enum TransactionType {
-  INCOME = 'income',
-  EXPENSE = 'expense'
+  INCOME = 0,
+  EXPENSE = 1
 }
 
 export enum CurrencyCode {
