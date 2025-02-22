@@ -37,11 +37,31 @@ const monthListChartData = (
         label: 'Transaction History',
         data: balanceHistory?.map(balance => balance.balanceAmount),
         fill: false,
-        borderColor: lineColor,
+        borderColor: function (context: any) {
+          const chart = context.chart;
+          const {ctx, chartArea} = chart;
+
+          if (!chartArea) {
+            // This case happens on initial chart load
+            return;
+          }
+          return getGradient(ctx, chartArea);
+        },
         borderWidth: 1
       }
     ]
   }
+}
+
+const getGradient = (ctx: any, chartArea: any) => {
+
+  const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+  gradient.addColorStop(0, '#FF0000');
+  gradient.addColorStop(0.5, '#FF0000');
+  gradient.addColorStop(0.5, '#00FF00');
+  gradient.addColorStop(1, '#00FF00');
+
+  return gradient;
 }
 
 const monthListChartOptions = (
