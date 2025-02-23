@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="mb-6">
+    <p class="text-lg text-surface-500">Import</p>
+    <h1 class="text-4xl font-bold mb-3">Add your transactions</h1>
+  </div>
+
+  <div class="mb-6">
+    <p-select-button [options]="importOptions" [ngModel]="selectedImport" (onOptionClick)="changeType($event.option)" optionLabel="label" optionValue="value" aria-labelledby="basic" />
+  </div>
+
+  <router-outlet></router-outlet>
+</div>
