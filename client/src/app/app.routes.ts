@@ -18,6 +18,11 @@ export const routes: Routes = [
     canMatch: [isAuthenticatedGuard]
   },
   {
+    path: 'import',
+    loadChildren: () => import('./modules/import/import.module').then(m => m.ImportModule),
+    canMatch: [isAuthenticatedGuard]
+  },
+  {
     path: '**',
     component: NotFoundPageComponent
   }
