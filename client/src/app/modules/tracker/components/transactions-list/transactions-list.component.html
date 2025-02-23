@@ -9,7 +9,7 @@
     </ng-template>
     <ng-template #body let-transaction>
       <tr>
-        <td><span class="text-lg mr-2">{{ transaction.date | date: 'mm.dd.YYY' }}</span></td>
+        <td><span class="text-lg mr-2">{{ transaction.date | date: 'dd.MM.YYY' }}</span></td>
         <td><span class="text-lg mr-2">{{ transaction.name | titlecase }}</span></td>
         <td class="text-end">
           <div *ngIf="transaction.type === TransactionTypes.INCOME">

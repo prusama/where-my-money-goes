@@ -114,6 +114,9 @@ const monthListChartOptions = (
           lineWidth: ({tick}) => tick.value == 0 ? 1 : 0
         }
       }
+    },
+    animation: {
+      duration: 0
     }
   };
 }
