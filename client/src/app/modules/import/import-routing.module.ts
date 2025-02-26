@@ -11,6 +11,11 @@ import {ImportYearPageComponent} from './pages/import-year-page/import-year-page
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: ImportType.SINGLE_ENTRY
+  },
+  {
+    path: '',
     component: ImportComponent,
     children: [
       {
