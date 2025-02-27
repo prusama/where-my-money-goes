@@ -38,7 +38,4 @@ export default definePreset(Aura, {
       }
     }
   },
-  card: {
-    background: 'red'
-  }
 });
